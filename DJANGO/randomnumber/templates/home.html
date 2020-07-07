@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Page Title</title>
+</head>
+<body>
+    <div>
+		{%if user.is_authenticated%}
+		<li>Hello, {{user.first_name}}</li>
+		<li><a href="logout">Logout</a></li>
+		{%else%}
+		<li><a href="resister">Resister</a></li>
+		<li><a href="login">Login</a></li>
+		{%endif%}
+	</div>
+	<div>
+		{%if user.is_authenticated%}
+		<form action="call_api" method="post">
+			{%csrf_token%}
+			<input type="submit" value="Click to Generate Random number">
+		</form>
+		<form action="see_remaining_limits" method="post">
+			{%csrf_token%}
+			<input type="submit" value="remaining limits">
+		</form>
+		{%else%}
+		<div>
+			<h2>
+			"New users resister and login to continue"
+			</h2>
+		</div>
+		{%endif%}
+
+	</div>
+
+</body>
+</html>
